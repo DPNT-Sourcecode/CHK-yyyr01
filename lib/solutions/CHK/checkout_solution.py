@@ -8,8 +8,8 @@ skus_dict = {
     "B": { "price": 30, "offer": {"discount": [(2, 45)]}},
     "C": { "price": 20},
     "D": { "price": 15},
-    "E": { "price": 40 , "offer": {"free": {"quantity": 2, "free_item": "B"}}},
-    "F": { "price": 10 , "offer": {"free": {"quantity": 2, "free_item": "F"}}}
+    "E": { "price": 40 , "offer": {"free": [(2, "B")]}},
+    "F": { "price": 10 , "offer": {"free": [(2, "F")]}}
 }
 
 double_discount_items = ["A", "H", "V"]
@@ -49,6 +49,7 @@ def get_single_offer_price(item, quantity):
         offer_price += (offer * discount_price) + (leftover * skus_dict[item]["price"])
     else:
         offer_price = quantity * skus_dict[item]["price"]
+    return offer_price
 
 
 
@@ -65,6 +66,9 @@ def calculate_item_price(item, item_details):
         total_checkout_value += offer_price
     print(total_checkout_value)
     return total_checkout_value
+
+def update_checkout_with_free_offers():
+
 
 def checkout(skus):
     # Initialize total checkout value to zero
@@ -112,6 +116,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
