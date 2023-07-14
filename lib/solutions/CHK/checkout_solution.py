@@ -37,7 +37,6 @@ def checkout(skus):
         # Check for invalid entry and return -1
         except KeyError:
             return -1
-        offer = skus_dict
         if item not in checkout_items:
             checkout_items[item] = 1
         else:
@@ -49,6 +48,7 @@ def checkout(skus):
         total_checkout_value += discounted_price
     #  return total checkout
     return total_checkout_value
+
 
 
 
