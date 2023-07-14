@@ -16,7 +16,7 @@ double_discount_items = ["A", "H", "V"]
 single_discount_items = ["B", "K", "P", "Q"]
 free_discount_items = ["E", "F", "N", "R", "U"]
 
-# Had to re-write this to make room for new requirement 
+
 def get_double_offer_price(item, quantity):
     offer_price = 0
     item_discount_price = skus_dict[item]["offer"].get("discount")
@@ -39,16 +39,22 @@ def get_double_offer_price(item, quantity):
         offer_price = quantity * skus_dict[item]["price"]
     return offer_price
 
+def get_single_offer_price(item, quantity):
+    offer_price = 0
+    item_discount_price = skus_dict[item]["offer"].get("discount")
+    discount = item_discount_price[0]
+    discount_price = item_discount_price[1]
+    
+
 
 def calculate_item_price(item, item_details):
     offer_price = 0
     total_checkout_value = 0
-    print(item, item_details)
     if item in double_discount_items:
         quantity = item_details[item]
         offer_price = get_double_offer_price("A", quantity)
         total_checkout_value += offer_price
-    elif item == "B":
+    elif item in single_discount_items:
         quantity = item_details[item]
         if quantity >= 2:
             offer, leftover = divmod(quantity, 2)
@@ -105,6 +111,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
