@@ -34,9 +34,12 @@ def checkout(skus):
     
     total_price = 0
     quantity_of_E = item_details.get("E", 0)
-    free_B = 0
+    quantity_of_B = item_details.get("B", 0)
     if quantity_of_E >= 2:
-        offer_price +
+        offer, free_B = divmod(quantity_of_E, 2)
+        if quantity_of_E:
+            item_details["B"] = 
+
 
 
     for item in item_details:
@@ -113,6 +116,7 @@ def checkout(skus):
         
     # #  return total checkout
     # return total_checkout_value
+
 
 
 
