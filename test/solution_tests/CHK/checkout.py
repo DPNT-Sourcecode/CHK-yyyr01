@@ -28,6 +28,3 @@ class TestCheckout():
         assert checkout_solution.checkout("EBB") == 85
         assert checkout_solution.checkout("EABD") == 135
 
-
-
-

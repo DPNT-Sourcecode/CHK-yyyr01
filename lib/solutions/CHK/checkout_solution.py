@@ -9,7 +9,8 @@ skus_dict = {
     "B": { "price": 30, "offers": "2A for 45"},
     "C": { "price": 20},
     "D": { "price": 15},
-    "E": { "price": 40 , "offers": "2E get one B free"}
+    "E": { "price": 40 , "offers": "2E get one B free"},
+    "F": { "price": 10 , "offers": "2F get one F free"}
 }
 
 # Had to re-write this to make room for new requirement 
@@ -39,6 +40,13 @@ def checkout(skus):
     if quantity_of_E >= 2:
         offer = quantity_of_E // 2
         if quantity_of_B >= offer:
+                item_details["B"] = item_details["B"] - offer
+
+    # Calculate free offer on F after purchase of 2F
+    quantity_of_F = item_details.get("F", 0)
+    if quantity_of_E >= 3:
+        offer = quantity_of_E // 3
+        if quantity_of_F >= offer:
                 item_details["B"] = item_details["B"] - offer
 
     # Calculate total checkout value
@@ -72,9 +80,3 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
-
-
-
-
-
-
