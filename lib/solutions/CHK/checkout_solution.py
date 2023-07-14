@@ -65,11 +65,3 @@ def checkout(skus):
         
     #  return total checkout
     return total_checkout_value
-
-
-
-
-
-
-
-
