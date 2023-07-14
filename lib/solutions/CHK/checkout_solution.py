@@ -5,10 +5,10 @@
 
 # dictionaty to store SKUs
 skus_dict = {
-    "A": 50,
-    "B": 30,
-    "C": 20,
-    "D": 15
+    "A": { "price": 50, "offers": "3A for 130"},
+    "B": { "price": 30, "offers": "2A for 45"},
+    "C": { "price": 20},
+    "D": { "price": 15}
 }
 
 
@@ -27,6 +27,7 @@ def checkout(skus):
     #  return total checkout
     return total_checkout_value
     
+
 
 
 
