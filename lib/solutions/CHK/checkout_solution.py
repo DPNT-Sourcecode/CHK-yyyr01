@@ -10,6 +10,8 @@ skus_dict = {
     "C": 20,
     "D": 15
 }
+
+
 def checkout(skus):
     # Initialize total checkout value to zero 
     total_checkout_value = 0
@@ -22,7 +24,9 @@ def checkout(skus):
             return -1
         # Add each sku price to total checkout
         total_checkout_value += skus_dict[item]
+    #  return total checkout
     return total_checkout_value
     
+
 
 
