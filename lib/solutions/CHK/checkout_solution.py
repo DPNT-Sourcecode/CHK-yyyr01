@@ -20,7 +20,7 @@ def checkout(skus):
     total_checkout_value = 0
     #  Store items with offers and quantity purchased
     item_details = {}
-    # loop through each skus to get their price
+    # loop through each skus to get their associated quantity
     for item in skus:
         # Check for invalid entry and return -1
         try:
@@ -32,14 +32,12 @@ def checkout(skus):
         else:
             item_details[item] += 1
     
-    total_price = 0
     quantity_of_E = item_details.get("E", 0)
     quantity_of_B = item_details.get("B", 0)
     if quantity_of_E >= 2:
-        offer, free_B = divmod(quantity_of_E, 2)
+        offer = quantity_of_E // 2
         if quantity_of_B >= offer:
                 item_details["B"] = item_details["B"] - offer
-
 
 
     for item in item_details:
@@ -59,7 +57,7 @@ def checkout(skus):
                 offer_price += (offer * 130) + (leftover * skus_dict[item]["price"])
             else:
                 offer_price = item_details[item] * skus_dict[item]["price"]
-            total_price += offer_price
+            total_ptotal_checkout_valueice += offer_price
         elif item == "B":
             offer_price = 0
             quantity = item_details[item]
@@ -68,11 +66,11 @@ def checkout(skus):
                 offer_price += (offer * 45) + (leftover * skus_dict[item]["price"])
             else:
                 offer_price = item_details[item] * skus_dict[item]["price"]
-            total_price += offer_price
+            total_checkout_value += offer_price
         else:
-            total_price += item_details[item] * skus_dict[item]["price"]
+            total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
-    return total_price
+    return total_checkout_value
 
 
 
@@ -116,4 +114,5 @@ def checkout(skus):
         
     # #  return total checkout
     # return total_checkout_value
+
 
