@@ -59,9 +59,11 @@ def checkout(skus):
         else:
             total_checkout_value += skus_dict[item]["price"]
     
+    # Process items not up to offer
     for offer in offer_check:
         item = skus_dict[offer]
         total_checkout_value += offer_check[offer] * item["price"]
         
     #  return total checkout
     return total_checkout_value
+
