@@ -14,9 +14,10 @@ skus_dict = {
     
 def apply_offer(item, item_quantity):
     offer_price = 0
-    offer = skus_dict[item].split(" ")
-    offer_price = offer[2]
+    offer = skus_dict[item]["offers"].split(" ")
+    offer_price = int(offer[2])
     offer_quantity = offer[0].split()[0]
+    print(offer_quantity)
     if item_quantity < offer_quantity:
         return item_quantity * skus_dict[item]["price"]
     of, rm = divmod(item_quantity, offer_quantity)
@@ -49,3 +50,4 @@ def checkout(skus):
         total_checkout_value += discounted_price
     #  return total checkout
     return total_checkout_value
+
