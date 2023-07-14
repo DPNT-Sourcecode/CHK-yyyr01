@@ -41,27 +41,19 @@ def checkout(skus):
             return -1
         has_offer = item_details.get("offer")
         if has_offer:
+            offer = has_offer.split(" ")
+            offer_quantity = offer[0][0]
+            offer_price = offer[2]
             if item not in offer_check:
                 offer_check[item] = 1
             else:
                 offer_check[item] += 1
-            offer = has_offer.split(" ")
-            offer_quantity = offer[0][0]
-            offer_price = offer[2]
-            
-        else:
-        if item not in checkout_items:
-            checkout_items[item] = 1
-        else:
-            checkout_items[item] += 1
-        
-        
-    discounted_price = apply_offer(checkout_items)
-            
+                if offer_check[item] == offer_quantity:
         # Add each sku price to total checkout
-    total_checkout_value += discounted_price
+        total_checkout_value += discounted_price
     #  return total checkout
     return total_checkout_value
+
 
 
 
