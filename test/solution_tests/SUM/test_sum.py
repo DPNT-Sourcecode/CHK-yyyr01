@@ -13,4 +13,3 @@ class TestCheckout():
         assert checkout_solution.checkout("AAA") == 100
         assert checkout_solution.checkout("ADA") == 115
 
-
