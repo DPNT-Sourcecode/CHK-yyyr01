@@ -24,14 +24,15 @@ def checkout(skus):
     for item in skus:
         # Check for invalid entry and return -1
         try:
-            item_details = skus_dict[item]
+            skus_dict[item]
         except KeyError:
             return -1
-        if item in item_details:
+        if item not in item_details:
             item_details[item] = 1
         else:
             item_details[item] += 1
     
+    print(item_details, "+++")
     for item in item_details:
         total_price = 0
         if item == "A":
@@ -45,6 +46,7 @@ def checkout(skus):
                     offer_price = leftover * 130
             elif quantity >= 3:
                 offer, leftover = divmod(quantity, 5)
+                print(skus_dict[item])
                 offer_price += quantity * 200 + leftover * skus_dict[item]["price"]
             total_price += offer_price
         elif item == "B":
@@ -132,6 +134,7 @@ def checkout(skus):
         
     # #  return total checkout
     # return total_checkout_value
+
 
 
 
