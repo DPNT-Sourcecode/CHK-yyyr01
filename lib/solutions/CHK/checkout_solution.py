@@ -34,10 +34,16 @@ def checkout(skus):
     
     for item in item_details:
         if item == "A":
+            offer_price = 0
             quantity = item_details[item]
             if quantity > 5:
                 offer, leftover = divmod(quantity, 5)
-                if leftover > 3
+                offer_price += quantity * 200
+                if leftover > 3:
+                    offer, leftover = divmod(leftover, 3)
+                    offer_price = leftover * 130
+            
+                
                 
 
         
@@ -111,3 +117,4 @@ def chk_r1_checkout(skus):
         
     #  return total checkout
     return total_checkout_value
+
