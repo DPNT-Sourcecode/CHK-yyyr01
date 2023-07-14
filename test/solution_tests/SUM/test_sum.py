@@ -43,6 +43,3 @@ class TestCheckout():
         assert checkout_solution.checkout("EABB") == 135
         assert checkout_solution.checkout("EBB") == 85
         assert checkout_solution.checkout("EABD") == 135
-
-
-
