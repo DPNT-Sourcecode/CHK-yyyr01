@@ -1,4 +1,4 @@
-from solutions.SUM import sum_solution
+from lib.solutions.SUM import sum_solution
 import pytest
 
 
@@ -9,5 +9,6 @@ class TestSum():
     def test_params_are_integers(self):
         with pytest.raises(Exception):
             assert sum_solution("5", [34])
+
 
 
