@@ -42,9 +42,14 @@ def get_double_offer_price(item, quantity):
 def get_single_offer_price(item, quantity):
     offer_price = 0
     item_discount_price = skus_dict[item]["offer"].get("discount")
-    discount = item_discount_price[0]
-    discount_price = item_discount_price[1]
-    
+    discount = item_discount_price[0][0]
+    discount_price = item_discount_price[0][1]
+    if quantity >= discount:
+        offer, leftover = divmod(quantity, 2)
+        offer_price += (offer * discount_price) + (leftover * skus_dict[item]["price"])
+    else:
+        offer_price = quantity * skus_dict[item]["price"]
+
 
 
 def calculate_item_price(item, item_details):
@@ -52,15 +57,11 @@ def calculate_item_price(item, item_details):
     total_checkout_value = 0
     if item in double_discount_items:
         quantity = item_details[item]
-        offer_price = get_double_offer_price("A", quantity)
+        offer_price = get_double_offer_price(item, quantity)
         total_checkout_value += offer_price
     elif item in single_discount_items:
         quantity = item_details[item]
-        if quantity >= 2:
-            offer, leftover = divmod(quantity, 2)
-            offer_price += (offer * 45) + (leftover * skus_dict[item]["price"])
-        else:
-            offer_price = item_details[item] * skus_dict[item]["price"]
+        offer_price = get_single_offer_price(item, quantity)
         total_checkout_value += offer_price
     print(total_checkout_value)
     return total_checkout_value
@@ -111,6 +112,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
