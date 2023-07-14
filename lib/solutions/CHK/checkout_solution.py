@@ -16,7 +16,8 @@ skus_dict = {
 def get_offer_price(item, quantity):
     item_discount_price = skus_dict[item]["offer"].get("discount")
     discount_order = OrderedDict(reversed(sorted(item_discount_price.items())))
-    for discount in 
+    if len(discount_order) == 2:
+        
 
     
 
@@ -99,6 +100,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
