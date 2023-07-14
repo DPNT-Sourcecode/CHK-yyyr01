@@ -8,7 +8,14 @@ class TestSum():
 
     def test_params_are_integers(self):
         with pytest.raises(Exception):
-            assert sum_solution("5", [34])
+            sum_solution("5", [34])
+    
+    def test_params_are_integers_bewteen_0_100(self):
+        with pytest.raises(Exception):
+            sum_solution(5, 101)
+            sum_solution(1005, 1)
+            sum_solution(1005, 101)
+
 
 
 
