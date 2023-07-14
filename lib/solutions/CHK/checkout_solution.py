@@ -14,20 +14,26 @@ skus_dict = {
 
 def checkout(skus):
     # Initialize total checkout value to zero 
-    total_checkout_items = {}
+    checkout_items = {}
     # loop through each skus to get their price
     for item in skus:
         try:
-            skus_dict[item]
+            item = skus_dict[item]
+            if item in checkout_items:
+                checkout_items["quantity"] += 1
+            else:
+                checkout_items["quantity"] = 1
         # Check for invalid entry and return -1
         except KeyError:
             return -1
-        offer = 
+        offer = skus_dict.get("offers"):
+            if 
         # Add each sku price to total checkout
         total_checkout_value += skus_dict[item]
     #  return total checkout
     return total_checkout_value
     
+
 
 
 
