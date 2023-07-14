@@ -49,15 +49,17 @@ def checkout(skus):
                 offer_check[item] = 1
             else:
                 offer_check[item] += 1
+                print(offer_check, "inside")
                 if offer_check[item] == offer_quantity:
                     total_checkout_value += offer_price
-                    del offer_check[item]
+                    a = offer_check.pop()
+                    print(offer_check, "done", a)
         # Add each sku price to total checkout
         else:
             total_checkout_value += skus_dict[item]["price"]
     
     for offer in offer_check:
-        print(offer)
+        print(offer, offer_check[offer])
         item = skus_dict[offer]
         total_checkout_value += offer_check[offer] * skus_dict[item]["price"]
 
@@ -65,6 +67,7 @@ def checkout(skus):
         
     #  return total checkout
     return total_checkout_value
+
 
 
 
