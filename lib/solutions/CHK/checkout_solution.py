@@ -12,6 +12,9 @@ skus_dict = {
     "F": { "price": 10 , "offer": {"free": {"quantity": 2, "free_item": "F"}}}
 }
 
+double_discount_items = ["A", "H", "V"]
+single_discount_items = ["B", "K", ]
+
 # Had to re-write this to make room for new requirement 
 def get_double_offer_price(item, quantity):
     offer_price = 0
@@ -20,8 +23,6 @@ def get_double_offer_price(item, quantity):
     highest_discount_price = item_discount_price[0][1]
     least_discount = item_discount_price[1][0]
     least_discount_price = item_discount_price[1][1]
-    print(highest_discount, highest_discount_price)
-    print(least_discount, least_discount_price)
     if quantity >= highest_discount:
         offer, leftover = divmod(quantity, highest_discount)
         offer_price += offer * highest_discount_price
@@ -38,28 +39,13 @@ def get_double_offer_price(item, quantity):
     return offer_price
 
 
-
-
 def calculate_item_price(item, item_details):
     offer_price = 0
     total_checkout_value = 0
     print(item, item_details)
-    if item == "A":
+    if item in double_discount_items:
         quantity = item_details[item]
         offer_price = get_double_offer_price("A", quantity)
-        # if quantity >= 5:
-        #     offer, leftover = divmod(quantity, 5)
-        #     offer_price += offer * 200
-        #     if leftover >= 3:
-        #         offer, leftover = divmod(leftover, 3)
-        #         offer_price += (offer * 130) + leftover * skus_dict[item]["price"]
-        #     else:
-        #         offer_price += leftover * skus_dict[item]["price"]
-        # elif quantity >= 3:
-        #     offer, leftover = divmod(quantity, 3)
-        #     offer_price += (offer * 130) + (leftover * skus_dict[item]["price"])
-        # else:
-        #     offer_price = item_details[item] * skus_dict[item]["price"]
         total_checkout_value += offer_price
     elif item == "B":
         quantity = item_details[item]
@@ -118,6 +104,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
