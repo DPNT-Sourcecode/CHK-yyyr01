@@ -37,7 +37,10 @@ def checkout(skus):
     
 def apply_offer(item):
     offer = skus_dict[item].split(" ")
-    offer_quantity = offer[0]
+    new_price = offer[2]
+    offer_quantity = offer[0].split()[0]
+    
+    
     
 
 
