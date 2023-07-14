@@ -8,24 +8,10 @@ skus_dict = {
     "A": { "price": 50, "offers": "3A for 130"},
     "B": { "price": 30, "offers": "2A for 45"},
     "C": { "price": 20},
-    "D": { "price": 15}
+    "D": { "price": 15},
+    "E": { "price": 40 , "offers": "2E get one B free"}
 }
 
-    
-def apply_offer(checkout_items):
-    if "A" in checkout_items or "B" in checkout_items:
-        offer_price = 0
-        offer = skus_dict[item]["offers"].split(" ")
-        offer_price = int(offer[2])
-        offer_quantity = int(offer[0][0])
-        print(offer_quantity)
-        if item_quantity < offer_quantity:
-            return item_quantity * skus_dict[item]["price"]
-        of, rm = divmod(item_quantity, offer_quantity)
-    new_price = (of * offer_price) + (rm * skus_dict[item]["price"])
-    return new_price
-    
-    
 
 def checkout(skus):
     # Initialize total checkout value to zero
@@ -66,4 +52,5 @@ def checkout(skus):
         
     #  return total checkout
     return total_checkout_value
+
 
