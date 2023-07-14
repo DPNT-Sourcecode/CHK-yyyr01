@@ -10,21 +10,22 @@ skus_dict = {
     "D": { "price": 15},
     "E": { "price": 40 , "offer": {"free": [(2, "B")]}},
     "F": { "price": 10 , "offer": {"free": [(2, "F")]}},
-    "G": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
-    "H": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
-    "I": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
-    "J": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
-    "K": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
-    "L": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
-    "M": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
-    "N": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
-    "O": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "G": { "price": 20, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "H": { "price": 10, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "I": { "price": 35, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "J": { "price": 60, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "K": { "price": 80, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "L": { "price": 90, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "M": { "price": 15, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "N": { "price": 40, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "O": { "price": 10, "offer": {"discount": [(5, 200), (3, 130)]}},
     "P": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
-    "Q": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "Q": { "price": 30, "offer": {"discount": [(5, 200), (3, 130)]}},
     "R": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
-    "S": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
-    "T": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "S": { "price": 30, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "T": { "price": 40, "offer": {"discount": [(5, 200), (3, 130)]}},
     "U": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "V": { "price": 20, "offer": {"discount": [(5, 200), (3, 130)]}},
     "W": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
     "X": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
     "Y": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
@@ -156,6 +157,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
