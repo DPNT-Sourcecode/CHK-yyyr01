@@ -51,8 +51,9 @@ def checkout(skus):
 
     # Calculate total checkout value
     for item in item_details:
-        has_offer = skus_dict[item].get(offer)
-        print(has_offer, )
+        item_offer = skus_dict[item].get("offer")
+        if item_offer():
+            is_free
         offer_price = 0
         if item == "A":
             quantity = item_details[item]
@@ -82,5 +83,6 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
