@@ -1,5 +1,4 @@
-
-
+from collections import OrderedDict
 # noinspection PyUnusedLocal
 # skus = unicode string
 
@@ -99,6 +98,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
