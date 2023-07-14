@@ -22,6 +22,7 @@ def checkout(skus):
     item_details = {}
     # loop through each skus to get their price
     for item in skus:
+        print(item)
         # Check for invalid entry and return -1
         try:
             skus_dict[item]
@@ -134,6 +135,7 @@ def checkout(skus):
         
     # #  return total checkout
     # return total_checkout_value
+
 
 
 
