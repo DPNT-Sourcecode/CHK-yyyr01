@@ -55,8 +55,12 @@ def checkout(skus):
         else:
             total_checkout_value += skus_dict[item]["price"]
     
+    for offer, values in offer_check:
+        total_checkout_value += 
+
     
         
     #  return total checkout
     return total_checkout_value
+
 
