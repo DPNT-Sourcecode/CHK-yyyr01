@@ -33,6 +33,8 @@ def checkout(skus):
             item_details[item] += 1
     
     for item in item_details:
+        if item == "A":
+            quantity = item[]
 
         
     
@@ -78,22 +80,22 @@ def chk_r1_checkout(skus):
         except KeyError:
             return -1
         # Check if there is offer on item
-        
         offer_details = item_details.get("offers")
         #  Process offer on item if any
-        if offer_details:
-            # Split out offer details
-            offer = offer_details.split(" ")
-            offer_quantity = int(offer[0][0])
-            offer_price = int(offer[2])
-            if item not in offer_check:
-                offer_check[item] = 1
-            else:
-                offer_check[item] += 1
-                # Process if quantity is up to offer quantity
-                if offer_check[item] == offer_quantity:
-                    total_checkout_value += offer_price
-                    del offer_check[item]
+        if item == "A":
+
+            # # Split out offer details
+            # offer = offer_details.split(" ")
+            # offer_quantity = int(offer[0][0])
+            # offer_price = int(offer[2])
+            # if item not in offer_check:
+            #     offer_check[item] = 1
+            # else:
+            #     offer_check[item] += 1
+            #     # Process if quantity is up to offer quantity
+            #     if offer_check[item] == offer_quantity:
+            #         total_checkout_value += offer_price
+            #         del offer_check[item]
         # Add each sku price to total checkout
         else:
             total_checkout_value += skus_dict[item]["price"]
@@ -105,6 +107,7 @@ def chk_r1_checkout(skus):
         
     #  return total checkout
     return total_checkout_value
+
 
 
 
