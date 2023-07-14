@@ -7,7 +7,7 @@ class TestCheckout():
         assert checkout_solution.checkout("A") == 50
 
     def test_checkout_invalid(self):
-        assert checkout_solution.checkout("PA") == -1
+        assert checkout_solution.checkout("3A") == -1
 
     def test_checkout_valid_multiple_without_offer(self):
         assert checkout_solution.checkout("AA") == 100
@@ -29,4 +29,5 @@ class TestCheckout():
         assert checkout_solution.checkout("EABD") == 135
 
     
+
 
