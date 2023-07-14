@@ -5,11 +5,11 @@
 
 # Dictionary to store SKUs, prices and offers
 skus_dict = {
-    "A": { "price": 50, "offers": {"discount": {"quantity": 3, "price": 130}}},
-    "B": { "price": 30, "offers": "2A for 45"},
+    "A": { "price": 50, "offers": {"discount": [(5, 200), (3, 130)]}},
+    "B": { "price": 30, "offers": {"discount": [(2, 45)]}},
     "C": { "price": 20},
     "D": { "price": 15},
-    "E": { "price": 40 , "offers": "2E get one B free"},
+    "E": { "price": 40 , "offers": {"free": {"quantity": 2, "free_item": "B"}}},
     "F": { "price": 10 , "offers": "2F get one F free"}
 }
 
@@ -120,6 +120,7 @@ def chk_r1_checkout(skus):
         
     #  return total checkout
     return total_checkout_value
+
 
 
 
