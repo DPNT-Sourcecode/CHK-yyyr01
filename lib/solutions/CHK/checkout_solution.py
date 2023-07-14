@@ -14,7 +14,7 @@ skus_dict = {
     "H": { "price": 10, "offer": {"discount": [(5, 45), (10, 80)]}},
     "I": { "price": 35},
     "J": { "price": 60},
-    "K": { "price": 80, "offer": {"discount": [(2, 150)]}},
+    "K": { "price": 70, "offer": {"discount": [(2, 120)]}},
     "L": { "price": 90},
     "M": { "price": 15},
     "N": { "price": 40, "offer": {"free": [(3, "M")]}},
@@ -22,14 +22,14 @@ skus_dict = {
     "P": { "price": 50, "offer": {"discount": [(5, 200)]}},
     "Q": { "price": 30, "offer": {"discount": [(3, 80)]}},
     "R": { "price": 50, "offer": {"free": [(3, "Q")]}},
-    "S": { "price": 30},
+    "S": { "price": 20},
     "T": { "price": 20},
     "U": { "price": 40, "offer": {"free": [(3, "U")]}},
     "V": { "price": 50, "offer": {"discount": [(2, 90), (3, 130)]}},
     "W": { "price": 20},
-    "X": { "price": 90},
-    "Y": { "price": 10},
-    "Z": { "price": 50},
+    "X": { "price": 17},
+    "Y": { "price": 20},
+    "Z": { "price": 21},
 }
 
 double_discount_items = ["A", "H", "V"]
@@ -144,6 +144,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
