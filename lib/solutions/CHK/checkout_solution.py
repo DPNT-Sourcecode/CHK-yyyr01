@@ -5,7 +5,7 @@
 
 # Dictionary to store SKUs, prices and offers
 skus_dict = {
-    "A": { "price": 50, "offers": "3A for 130"},
+    "A": { "price": 50, "offers": "3A for 130, 5A for 200"},
     "B": { "price": 30, "offers": "2A for 45"},
     "C": { "price": 20},
     "D": { "price": 15},
@@ -53,7 +53,7 @@ def checkout(skus):
                     offer, leftover = divmod(leftover, 3)
                     offer_price += (offer * 130) + leftover * skus_dict[item]["price"]
                 else:
-                    offer_price = item_details[item] * skus_dict[item]["price"]
+                    offer_price = leftover * skus_dict[item]["price"]
             elif quantity >= 3:
                 offer, leftover = divmod(quantity, 3)
                 offer_price += (offer * 130) + (leftover * skus_dict[item]["price"])
@@ -115,6 +115,7 @@ def checkout(skus):
         
     # #  return total checkout
     # return total_checkout_value
+
 
 
 
