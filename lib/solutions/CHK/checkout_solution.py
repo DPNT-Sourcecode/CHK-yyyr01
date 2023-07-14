@@ -45,22 +45,24 @@ def checkout(skus):
             offer_quantity = offer[0][0]
             offer_price = offer[2]
             if item not in offer_check:
-                offer_check[item] = {"applied": False, "quantity": 1}
+                offer_check[item] = 1
             else:
-                offer_check[item]["quantity"] += 1
-                if offer_check[item]["quantity"] == offer_quantity:
+                offer_check[item] += 1
+                if offer_check[item] == offer_quantity:
                     total_checkout_value += offer_price
                     del offer_check[item]
         # Add each sku price to total checkout
         else:
             total_checkout_value += skus_dict[item]["price"]
     
-    for offer, values in offer_check:
-        total_checkout_value += 
+    for offer in offer_check:
+        item = skus_dict[offer]
+        total_checkout_value += offer_check[offer] * skus_dict[item]["price"]
 
     
         
     #  return total checkout
     return total_checkout_value
+
 
 
