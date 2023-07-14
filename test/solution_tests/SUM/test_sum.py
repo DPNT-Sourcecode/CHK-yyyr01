@@ -15,8 +15,3 @@ class TestSum():
             sum_solution(5, 101)
             sum_solution(1005, 1)
             sum_solution(1005, 101)
-
-
-
-
-

@@ -6,6 +6,3 @@ def compute(x, y):
         raise Exception("number should be between 0 and 100")
     
     return x + y
-
-
-
