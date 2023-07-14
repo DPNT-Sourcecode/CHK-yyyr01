@@ -14,6 +14,7 @@ class TestCheckout():
         assert checkout_solution.checkout("ADA") == 115
 
     def test_checkout_valid_multiple_with_offer(self):
+        assert checkout_solution.checkout("AAAAA") == 200
         assert checkout_solution.checkout("AAAAAAA") == 300
         assert checkout_solution.checkout("AAAAAA") == 250
         assert checkout_solution.checkout("ADA") == 115
@@ -27,6 +28,7 @@ class TestCheckout():
         assert checkout_solution.checkout("EABB") == 135
         assert checkout_solution.checkout("EBB") == 85
         assert checkout_solution.checkout("EABD") == 135
+
 
 
 
