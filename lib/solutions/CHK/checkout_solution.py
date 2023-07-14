@@ -27,11 +27,17 @@ def checkout(skus):
         except KeyError:
             return -1
         offer = skus_dict.get("offers"):
-            if 
+        if offers:
+            discouted_price = apply_offer(item)
+            
         # Add each sku price to total checkout
         total_checkout_value += skus_dict[item]
     #  return total checkout
     return total_checkout_value
+    
+def apply_offer(item):
+    offer = skus_dict[item].split(" ")
+    offer_quantity = offer[0]
     
 
 
