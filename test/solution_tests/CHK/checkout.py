@@ -1,9 +1,11 @@
-from lib.solutions.CHK import checkout
+from lib.solutions.CHK import checkout_solution
+import pytest
 
 
-class TestSum():
+class TestCheckout():
     def test_checkout_valid(self):
-        assert checkout("A") == 50
+        assert checkout_solution("A") == 50
 
     def test_checkout_invalid(self):
-        assert checkout("PA") == 50
+        assert checkout_solution("PA") == -1
+
