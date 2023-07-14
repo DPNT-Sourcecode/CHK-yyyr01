@@ -39,10 +39,11 @@ class TestCheckout():
 
     def test_checkout_new_items(self):
         assert checkout_solution.checkout("EEBZ") == 130
-        assert checkout_solution.checkout("RRRQ") == 150
+        assert checkout_solution.checkout("RRRR") == 150
         assert checkout_solution.checkout("HERB") == 130
         assert checkout_solution.checkout("UUUU") == 90
         assert checkout_solution.checkout("NNNM") == 120
+
 
 
 

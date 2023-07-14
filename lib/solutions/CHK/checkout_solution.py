@@ -95,6 +95,8 @@ def update_checkout_with_free_offers(item_details):
             free_offer_details = skus_dict[item]["offer"].get("free", 0)
             free_item_quantity = free_offer_details[0][0]
             free_item = free_offer_details[0][1]
+            if free_item not in item_details:
+                item_details
             print(free_item, free_item_quantity)
             if item == free_item:
                 if checkout_item_quantity >= free_item_quantity + 1:
@@ -158,6 +160,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
