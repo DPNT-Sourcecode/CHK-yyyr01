@@ -18,6 +18,7 @@ skus_dict = {
 def calculate_item_price(item, item_details):
     offer_price = 0
     total_checkout_value = 0
+    print(item, item_details)
     if item == "A":
         quantity = item_details[item]
         if quantity >= 5:
@@ -42,6 +43,7 @@ def calculate_item_price(item, item_details):
         else:
             offer_price = item_details[item] * skus_dict[item]["price"]
         total_checkout_value += offer_price
+    print(total_checkout_value)
     return total_checkout_value
 
 def checkout(skus):
@@ -88,6 +90,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
