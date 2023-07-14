@@ -30,23 +30,28 @@ def apply_offer(checkout_items):
 def checkout(skus):
     # Initialize total checkout value to zero
     total_checkout_value = 0
+    #  Store items with offers and quantity purchased
     offer_check = {}
     # loop through each skus to get their price
     for item in skus:
+        # Check for invalid entry and return -1
         try:
             item_details = skus_dict[item]
-        # Check for invalid entry and return -1
         except KeyError:
             return -1
-        has_offer = item_details.get("offers")
-        if has_offer:
-            offer = has_offer.split(" ")
+        # Check if there is offer on item
+        offer_details = item_details.get("offers")
+        #  Process offer on item if any
+        if offer_details:
+            # Split out offer details
+            offer = offer_details.split(" ")
             offer_quantity = int(offer[0][0])
             offer_price = int(offer[2])
             if item not in offer_check:
                 offer_check[item] = 1
             else:
                 offer_check[item] += 1
+                # Process if quantity is up to offer quantity
                 if offer_check[item] == offer_quantity:
                     total_checkout_value += offer_price
                     del offer_check[item]
@@ -60,6 +65,7 @@ def checkout(skus):
         
     #  return total checkout
     return total_checkout_value
+
 
 
 

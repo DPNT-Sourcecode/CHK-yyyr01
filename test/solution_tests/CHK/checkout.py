@@ -8,3 +8,8 @@ class TestCheckout():
 
     def test_checkout_invalid(self):
         assert checkout_solution.checkout("PA") == -1
+
+    def test_checkout_valid_multiple(self):
+        assert checkout_solution.checkout("AAA") == 130
+        assert checkout_solution.checkout("ADA") == 115
+
