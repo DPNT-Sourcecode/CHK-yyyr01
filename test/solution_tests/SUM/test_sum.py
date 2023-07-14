@@ -7,6 +7,7 @@ class TestSum():
         assert sum_solution.compute(1, 2) == 3
 
     def test_params_are_integers(self):
-        with pytest.ra
-        assert sum_solution("5", [34])
+        with pytest.raises(Exception):
+            assert sum_solution("5", [34])
+
 
