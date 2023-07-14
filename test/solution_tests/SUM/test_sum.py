@@ -34,6 +34,7 @@ class TestCheckout():
         assert checkout_solution.checkout("FFFFFF") == 40
         assert checkout_solution.checkout("EEBFB") == 120
         assert checkout_solution.checkout("FFFFFFF") == 50
-        assert checkout_solution.checkout("EAFF") == 110
+        assert checkout_solution.checkout("EAFF") == 1100
         assert checkout_solution.checkout("FFFF") == 30
+
 

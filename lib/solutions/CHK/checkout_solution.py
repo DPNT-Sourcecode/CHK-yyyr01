@@ -71,8 +71,10 @@ def update_checkout_with_free_offers(item_details):
     for item in item_details:
         if item in free_discount_items:
             free_offer_details = skus_dict[item]["offer"].get("free")
-            item_quantity = free_offer_details[]
-            free_item_quantity = item_details.get()
+            free_item_quantity = free_offer_details[0][0]
+            free_item = free_offer_details[0][1]
+            print(free_item, free_item_quantity)
+            if item
 
 
 
@@ -96,6 +98,7 @@ def checkout(skus):
             item_details[item] += 1
     
     # Calculate free offer on B after purchase of 2E
+    update_checkout_with_free_offers(item_details)
     quantity_of_E = item_details.get("E", 0)
     quantity_of_B = item_details.get("B", 0)
     if quantity_of_E >= 2:
@@ -123,6 +126,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
