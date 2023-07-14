@@ -38,7 +38,8 @@ def checkout(skus):
     if quantity_of_E >= 2:
         offer, free_B = divmod(quantity_of_E, 2)
         if quantity_of_E:
-            item_details["B"] = 
+            if quantity_of_B >= offer:
+                item_details["B"] = item_details["B"] - offer
 
 
 
@@ -116,11 +117,3 @@ def checkout(skus):
         
     # #  return total checkout
     # return total_checkout_value
-
-
-
-
-
-
-
-
