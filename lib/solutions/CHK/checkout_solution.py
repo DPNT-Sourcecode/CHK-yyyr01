@@ -14,13 +14,17 @@ skus_dict = {
 }
 
 # Had to re-write this to make room for new requirement 
-def get_offer_price(item):
-    
+def get_offer_price(item, quantity):
+    item_discount_price = skus_dict["offer"].get("discount")
+    print(item_discount_price, quantity)
+
+
 def calculate_item_price(item, item_details):
     offer_price = 0
     total_checkout_value = 0
     print(item, item_details)
     if item == "A":
+        get_offer_price(item, quantity)
         quantity = item_details[item]
         if quantity >= 5:
             offer, leftover = divmod(quantity, 5)
@@ -93,13 +97,4 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
-
-
-
-
-
-
-
-
-
 
