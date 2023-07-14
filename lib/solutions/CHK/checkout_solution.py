@@ -5,12 +5,12 @@
 
 # Dictionary to store SKUs, prices and offers
 skus_dict = {
-    "A": { "price": 50, "offers": {"discount": [(5, 200), (3, 130)]}},
-    "B": { "price": 30, "offers": {"discount": [(2, 45)]}},
+    "A": { "price": 50, "offer": {"discount": [(5, 200), (3, 130)]}},
+    "B": { "price": 30, "offer": {"discount": [(2, 45)]}},
     "C": { "price": 20},
     "D": { "price": 15},
-    "E": { "price": 40 , "offers": {"free": {"quantity": 2, "free_item": "B"}}},
-    "F": { "price": 10 , "offers": {"free": {"quantity": 2, "free_item": "F"}}}
+    "E": { "price": 40 , "offer": {"free": {"quantity": 2, "free_item": "B"}}},
+    "F": { "price": 10 , "offer": {"free": {"quantity": 2, "free_item": "F"}}}
 }
 
 # Had to re-write this to make room for new requirement 
@@ -51,9 +51,9 @@ def checkout(skus):
 
     # Calculate total checkout value
     for item in item_details:
+        has_offer = skus_dict[item].get(offer)
+        print(has_offer, )
         offer_price = 0
-        free_offer = item_details.get(item)
-        
         if item == "A":
             quantity = item_details[item]
             if quantity >= 5:
@@ -82,4 +82,5 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
