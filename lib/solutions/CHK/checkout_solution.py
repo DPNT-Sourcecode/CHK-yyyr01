@@ -28,27 +28,27 @@ def apply_offer(item, item_quantity):
 def checkout(skus):
     # Initialize total checkout value to zero
     total_checkout_value = 0
-    checkout_items = {}
+    checkout_items = dict()
     # loop through each skus to get their price
     for item in skus:
         has_offer = False
         try:
-            item = skus_dict[item]
+            item_details = skus_dict[item]
         # Check for invalid entry and return -1
         except KeyError:
             return -1
-        if item in checkout_items:
-            checkout_items[item] += 1
-        else:
+        if item not in checkout_items:
             checkout_items[item] = 1
+        else:
+            checkout_items[item] += 1
         
-
         discounted_price = apply_offer(item, checkout_items["quantity"])
             
         # Add each sku price to total checkout
         total_checkout_value += discounted_price
     #  return total checkout
     return total_checkout_value
+
 
 
 
