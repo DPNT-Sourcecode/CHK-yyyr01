@@ -22,7 +22,6 @@ def checkout(skus):
     item_details = {}
     # loop through each skus to get their price
     for item in skus:
-        print(item)
         # Check for invalid entry and return -1
         try:
             skus_dict[item]
@@ -49,16 +48,17 @@ def checkout(skus):
                 offer, leftover = divmod(quantity, 5)
                 print(skus_dict[item])
                 offer_price += (quantity * 200) + (leftover * skus_dict[item]["price"])
+                print(offer_price)
             total_price += quantity * skus_dict[item]["price"]
-        if item == "B":
+        elif item == "B":
             offer_price = 0
             quantity = item_details[item]
             if quantity >= 2:
                 offer, leftover = divmod(quantity, 5)
                 offer_price += (quantity * 45) + (leftover * skus_dict[item]["price"])
             total_price += offer_price
-        
-        total_price += total_price + (item_details[item] * skus_dict[item]["price"])
+        else:
+            total_price += item_details[item] * skus_dict[item]["price"]
     
     return total_price
                 
@@ -135,6 +135,7 @@ def checkout(skus):
         
     # #  return total checkout
     # return total_checkout_value
+
 
 
 
