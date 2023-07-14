@@ -84,11 +84,11 @@ def checkout(skus):
             discounted_item = item_offer.get("discount")
             if discounted_item:
                 total_checkout_value = calculate_item_price(item, item_details)
-        
         else:
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
