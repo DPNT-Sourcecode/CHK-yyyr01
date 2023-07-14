@@ -13,7 +13,7 @@ skus_dict = {
 
     
 def apply_offer(checkout_items):
-    if item == "A" or item == "B":
+    if "A" in checkout_items or "B" in checkout_items:
         offer_price = 0
         offer = skus_dict[item]["offers"].split(" ")
         offer_price = int(offer[2])
@@ -22,8 +22,8 @@ def apply_offer(checkout_items):
         if item_quantity < offer_quantity:
             return item_quantity * skus_dict[item]["price"]
         of, rm = divmod(item_quantity, offer_quantity)
-        new_price = (of * offer_price) + (rm * skus_dict[item]["price"])
-        return new_price
+    new_price = (of * offer_price) + (rm * skus_dict[item]["price"])
+    return new_price
     
     
 
@@ -33,9 +33,10 @@ def checkout(skus):
     checkout_items = dict()
     # loop through each skus to get their price
     for item in skus:
-        has_offer = False
         try:
-            skus_dict[item]
+            item_details = skus_dict[item]
+            has_offer = item_details.get("offer")
+            
         # Check for invalid entry and return -1
         except KeyError:
             return -1
@@ -51,5 +52,6 @@ def checkout(skus):
     total_checkout_value += discounted_price
     #  return total checkout
     return total_checkout_value
+
 
 
