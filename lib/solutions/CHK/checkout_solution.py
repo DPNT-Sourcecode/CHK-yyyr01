@@ -33,13 +33,14 @@ def checkout(skus):
     for item in skus:
         try:
             item = skus_dict[item]
-            if item in checkout_items:
-                checkout_items["quantity"] += 1
-            else:
-                checkout_items["quantity"] = 1
         # Check for invalid entry and return -1
         except KeyError:
             return -1
+        if item in checkout_items:
+            checkout_items[item] += 1
+        else:
+            checkout_items[item] = 1
+        
         offer = skus_dict.get("offers")
         if offer:
             discounted_price = apply_offer(item, checkout_items["quantity"])
@@ -48,4 +49,5 @@ def checkout(skus):
         total_checkout_value += discounted_price
     #  return total checkout
     return total_checkout_value
+
 
