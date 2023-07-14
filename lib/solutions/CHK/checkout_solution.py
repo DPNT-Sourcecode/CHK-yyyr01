@@ -43,7 +43,8 @@ def calculate_item_price(item, item_details):
     total_checkout_value = 0
     print(item, item_details)
     if item == "A":
-        offer_price = 
+        quantity = item_details[item]
+        offer_price = get_double_offer_price("A", quantity)
         total_checkout_value += offer_price
     elif item == "B":
         quantity = item_details[item]
@@ -102,6 +103,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
