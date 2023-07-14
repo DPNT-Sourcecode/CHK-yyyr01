@@ -19,4 +19,3 @@ class TestCheckout():
         assert checkout_solution.checkout("ABAB") == 145
         assert checkout_solution.checkout("AABAB") == 175
 
-
