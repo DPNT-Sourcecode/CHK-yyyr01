@@ -42,17 +42,10 @@ def checkout(skus):
         else:
             checkout_items[item] += 1
         
-        discounted_price = apply_offer(item, checkout_items[item])
+        if item == "A" or item == "B":
+            discounted_price = apply_offer(item, checkout_items[item])
             
         # Add each sku price to total checkout
         total_checkout_value += discounted_price
     #  return total checkout
     return total_checkout_value
-
-
-
-
-
-
-
-
