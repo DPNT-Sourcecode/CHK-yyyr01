@@ -50,11 +50,13 @@ def checkout(skus):
                 offer_check[item]["quantity"] += 1
                 if offer_check[item]["quantity"] == offer_quantity:
                     total_checkout_value += offer_price
-                    offer_check[item]["quantity"] = 0
-                    offer_check["applied"] = True
-                
+                    del offer_check[item]
         # Add each sku price to total checkout
         else:
             total_checkout_value += skus_dict[item]["price"]
+    
+    
+        
     #  return total checkout
     return total_checkout_value
+
