@@ -9,8 +9,10 @@ item_dicts = {
     "D": 15
 }
 def checkout(skus):
-    # how is the sku string structured?
+    checkout_value = item_dicts.get(skus, -1)
+    return checkout_value
     
+
 
 
 
