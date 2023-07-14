@@ -40,6 +40,7 @@ def checkout(skus):
             quantity = item_details[item]
             if quantity >= 5:
                 offer, leftover = divmod(quantity, 5)
+                print(offer, leftover, "==")
                 offer_price += offer * 200
                 if leftover > 3:
                     offer, leftover = divmod(leftover, 3)
@@ -142,5 +143,6 @@ def checkout(skus):
         
     # #  return total checkout
     # return total_checkout_value
+
 
 
