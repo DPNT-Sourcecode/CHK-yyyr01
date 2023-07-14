@@ -35,11 +35,14 @@ def checkout(skus):
     for item in skus:
         try:
             item_details = skus_dict[item]
-            has_offer = item_details.get("offer")
-            
         # Check for invalid entry and return -1
         except KeyError:
             return -1
+        has_offer = item_details.get("offer")
+        if has_offer:
+            offer = has_offer.split(" ")
+            offer_quantity = offer[0][0]
+            offer_price = 
         if item not in checkout_items:
             checkout_items[item] = 1
         else:
@@ -52,6 +55,7 @@ def checkout(skus):
     total_checkout_value += discounted_price
     #  return total checkout
     return total_checkout_value
+
 
 
 
