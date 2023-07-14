@@ -30,7 +30,7 @@ class TestCheckout():
         assert checkout_solution.checkout("EABD") == 135
 
     def test_checkout_get_free_F_with_offer(self):
-        assert checkout_solution.checkout("FFFZ") == 20
+        assert checkout_solution.checkout("FFF") == 20
         assert checkout_solution.checkout("FFFFFF") == 40
         assert checkout_solution.checkout("EEBFB") == 120
         assert checkout_solution.checkout("FFFFFFF") == 50
@@ -38,9 +38,10 @@ class TestCheckout():
         assert checkout_solution.checkout("FFFF") == 30
 
     def test_checkout_new_items(self):
-        assert checkout_solution.checkout("EEB") == 80
-        assert checkout_solution.checkout("EEBB") == 110
-        assert checkout_solution.checkout("EABB") == 135
-        assert checkout_solution.checkout("EBB") == 85
-        assert checkout_solution.checkout("EABD") == 135
+        assert checkout_solution.checkout("EEBZ") == 130
+        assert checkout_solution.checkout("RRRR") == 150
+        assert checkout_solution.checkout("HERB") == 130
+        assert checkout_solution.checkout("UUUU") == 90
+        assert checkout_solution.checkout("NNNM") == 120
+
 
