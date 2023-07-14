@@ -24,19 +24,19 @@ class TestCheckout():
 
     def test_checkout_get_free_B_with_offer(self):
         assert checkout_solution.checkout("EEB") == 80
-        # assert checkout_solution.checkout("EEBB") == 110
-        # assert checkout_solution.checkout("EABB") == 135
-        # assert checkout_solution.checkout("EBB") == 85
-        # assert checkout_solution.checkout("EABD") == 135
+        assert checkout_solution.checkout("EEBB") == 110
+        assert checkout_solution.checkout("EABB") == 135
+        assert checkout_solution.checkout("EBB") == 85
+        assert checkout_solution.checkout("EABD") == 135
 
     def test_checkout_get_free_F_with_offer(self):
-        pass
-        # assert checkout_solution.checkout("FFF") == 20
-        # assert checkout_solution.checkout("FFFFFF") == 40
-        # assert checkout_solution.checkout("EEBFB") == 120
-        # assert checkout_solution.checkout("FFFFFFF") == 50
-        # assert checkout_solution.checkout("EAFF") == 1106
-        # assert checkout_solution.checkout("FFFF") == 30
+        assert checkout_solution.checkout("FFF") == 20
+        assert checkout_solution.checkout("FFFFFF") == 40
+        assert checkout_solution.checkout("EEBFB") == 120
+        assert checkout_solution.checkout("FFFFFFF") == 50
+        assert checkout_solution.checkout("EAFF") == 110
+        assert checkout_solution.checkout("FFFF") == 30
+
 
 
 
