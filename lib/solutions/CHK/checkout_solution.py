@@ -4,7 +4,7 @@ from collections import OrderedDict
 
 # Dictionary to store SKUs, prices and offers
 skus_dict = {
-    "A": { "price": 50, "offer": {"discount": {3: 130, 5: 200}}},
+    "A": { "price": 50, "offer": {"discount": [(5, 200), (3, 120)]}},
     "B": { "price": 30, "offer": {"discount": [(2, 45)]}},
     "C": { "price": 20},
     "D": { "price": 15},
@@ -15,9 +15,9 @@ skus_dict = {
 # Had to re-write this to make room for new requirement 
 def get_offer_price(item, quantity):
     item_discount_price = skus_dict[item]["offer"].get("discount")
-    discount_order = OrderedDict(reversed(sorted(item_discount_price.items())))
-    if len(discount_order) == 2:
-        
+    if len(item_discount_price) == 2:
+        if quantity >= item_discount_price[0][1]
+
 
     
 
@@ -100,6 +100,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
