@@ -48,17 +48,17 @@ def checkout(skus):
             elif quantity >= 3:
                 offer, leftover = divmod(quantity, 5)
                 print(skus_dict[item])
-                offer_price += quantity * 200 + leftover * skus_dict[item]["price"]
-            total_price += offer_price
+                offer_price += (quantity * 200) + (leftover * skus_dict[item]["price"])
+            total_price += quantity * skus_dict[item]["price"]
         elif item == "B":
             offer_price = 0
             quantity = item_details[item]
             if quantity >= 2:
                 offer, leftover = divmod(quantity, 5)
-                offer_price += quantity * 45 + leftover * skus_dict[item]["price"]
+                offer_price += (quantity * 45) + (leftover * skus_dict[item]["price"])
             total_price += offer_price
         else:
-            total_price += item_details[item] * skus_dict[item]
+            total_price += item_details[item] * skus_dict[item]["price"]
     
     return total_price
                 
@@ -135,6 +135,7 @@ def checkout(skus):
         
     # #  return total checkout
     # return total_checkout_value
+
 
 
 
