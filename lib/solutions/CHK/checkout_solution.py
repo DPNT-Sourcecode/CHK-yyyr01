@@ -2,21 +2,27 @@
 
 # noinspection PyUnusedLocal
 # skus = unicode string
-item_dicts = {
+
+# dictionaty to store SKUs
+skus_dict = {
     "A": 50,
     "B": 30,
     "C": 20,
     "D": 15
 }
 def checkout(skus):
-    Init
+    # Initialize total checkout value to zero 
     total_checkout_value = 0
+    # loop through each skus to get their price
     for item in skus:
         try:
-            item_dicts[item]
+            skus_dict[item]
+        # Check for invalid entry and return -1
         except KeyError:
             return -1
-        total_checkout_value += item_dicts[item]
+        # Add each sku price to total checkout
+        total_checkout_value += skus_dict[item]
     return total_checkout_value
     
+
 
