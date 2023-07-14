@@ -12,7 +12,8 @@ skus_dict = {
     "E": { "price": 40 , "offers": "2E get one B free"}
 }
 
-def get_purchased
+# def get_checkout_details():
+
 
 def checkout(skus):
     # Initialize total checkout value to zero
@@ -30,6 +31,9 @@ def checkout(skus):
             item_details[item] = 1
         else:
             item_details[item] += 1
+    
+    for item in item_details:
+
         
     
         # # Check if there is offer on item
@@ -74,6 +78,7 @@ def chk_r1_checkout(skus):
         except KeyError:
             return -1
         # Check if there is offer on item
+        
         offer_details = item_details.get("offers")
         #  Process offer on item if any
         if offer_details:
@@ -100,6 +105,7 @@ def chk_r1_checkout(skus):
         
     #  return total checkout
     return total_checkout_value
+
 
 
 
