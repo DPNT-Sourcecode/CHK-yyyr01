@@ -25,13 +25,13 @@ def get_double_offer_price(item: int, quantity: str) -> int:
         offer_price (int): New price after offer has been applied
     """
     offer_price = 0
-    # Get discount info for item
+    # get discount info for item
     item_discount_price = skus_dict[item]["offer"].get("discount")
     highest_discount = item_discount_price[1][0]
     highest_discount_price = item_discount_price[1][1]
     least_discount = item_discount_price[0][0]
     least_discount_price = item_discount_price[0][1]
-    # calculate item 
+    # calculate item price with offer
     if quantity >= highest_discount:
         offer, leftover = divmod(quantity, highest_discount)
         offer_price += offer * highest_discount_price
@@ -62,6 +62,7 @@ def get_single_offer_price(item: int, quantity: int) -> int:
     item_discount_price = skus_dict[item]["offer"].get("discount")
     discount = item_discount_price[0][0]
     discount_price = item_discount_price[0][1]
+    # calculate item price with offer
     if quantity >= discount:
         offer, leftover = divmod(quantity, discount)
         offer_price += (offer * discount_price) + (leftover * skus_dict[item]["price"])
@@ -160,7 +161,7 @@ def checkout(skus: str) -> int:
     item_details = {}
     # store items with the "any three" offer
     for_three = []
-    # loop through each skus to get their associated quantity
+    # loop through each SKU to get their associated quantity
     for item in skus:
         # Check for invalid entry and return -1
         try:
@@ -202,6 +203,7 @@ def checkout(skus: str) -> int:
     
     # add the total price of items with "any_three" offer to the total checkout value
     return total_checkout_value + any_three_offer_price
+
 
 
 
