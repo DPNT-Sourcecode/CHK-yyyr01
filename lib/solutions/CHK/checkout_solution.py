@@ -154,9 +154,9 @@ def checkout(skus):
     """
     # Initialize total checkout value to zero
     total_checkout_value = 0
-    #  Store items and quantity purchased in cart
+    # store items and quantity purchased in cart
     item_details = {}
-    # Store items with the "any three" offer
+    # store items with the "any three" offer
     for_three = []
     # loop through each skus to get their associated quantity
     for item in skus:
@@ -176,16 +176,18 @@ def checkout(skus):
         else:
             for_three.append({"item": item, "price": skus_dict[item]["price"]})
     
-    #  sort items with "any three" offer 
+    #  sort items with "any three" offer by their price, starting with the highest
     sorted_three = sorted(for_three, key=lambda d: d["price"], reverse=True)
+    #  get total price of items with "any_three" offer
     any_three_offer_price = get_any_three_offer_total_price(sorted_three)
-    # Calculate free offer on B after purchase of 2E
+
+    # calculate free offer on B after purchase of 2E
     item_details = update_checkout_with_free_offers(item_details)
 
-    # Calculate total checkout value
+    # calculate total checkout value
     for item in item_details:
         item_offer = skus_dict[item].get("offer")
-        # Calculate checkout of discounted items
+        # calculate checkout of discounted items
         if item_offer:
             discounted_item = item_offer.get("discount")
             if discounted_item:
@@ -195,7 +197,9 @@ def checkout(skus):
         else:
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
+    # add the total price of items with "any_three" offer to the total checkout value
     return total_checkout_value + any_three_offer_price
+
 
 
 
