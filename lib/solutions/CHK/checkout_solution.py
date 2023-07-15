@@ -150,12 +150,13 @@ def checkout(skus):
         skus (string): string containing the SKUs of all the products in the basket
     
     Returns:
-        price (int): total checkout value of all the items
+        total_checkout_value (int): total checkout value of all the items
     """
     # Initialize total checkout value to zero
     total_checkout_value = 0
-    #  Store items and quantity purchased
+    #  Store items and quantity purchased in cart
     item_details = {}
+    # Store items with the "any three" offer
     for_three = []
     # loop through each skus to get their associated quantity
     for item in skus:
@@ -164,14 +165,18 @@ def checkout(skus):
             skus_dict[item]
         except KeyError:
             return -1
-        #  increase item quantity
+        #  add items without any three_offers in the item_details cart
         if item not in any_three_offer_items:
+            #  increase item quantity
             if item not in item_details:
                 item_details[item] = 1
             else:
                 item_details[item] += 1
+        # save items with "any three" offer, to be computed separately
         else:
             for_three.append({"item": item, "price": skus_dict[item]["price"]})
+    
+    #  sort items with "any three" offer 
     sorted_three = sorted(for_three, key=lambda d: d["price"], reverse=True)
     any_three_offer_price = get_any_three_offer_total_price(sorted_three)
     # Calculate free offer on B after purchase of 2E
@@ -191,5 +196,6 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
 
