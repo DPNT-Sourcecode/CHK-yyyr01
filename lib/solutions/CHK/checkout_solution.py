@@ -164,8 +164,9 @@ def checkout(skus):
                 item_details[item] += 1
         else:
             for_three.append(item)
-            insort(for_three, {item: skus_dict[item]["price"]})
-            print(for_three_sd)
+            print(item,skus_dict[item]["price"] )
+            insort(for_three_sd, {item: skus_dict[item]["price"]}, key=lambda x: x[])
+            print(for_three_sd, "k")
 
     any_three_offer_price = get_any_three_offer_total_price(for_three)
     # Calculate free offer on B after purchase of 2E
@@ -185,6 +186,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
 
 
