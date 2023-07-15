@@ -7,7 +7,7 @@ file = open("lib/solutions/CHK/skus.json")
 # Dictionary to store SKUs, prices and offers
 skus_dict = json.load(file)
 
-# lists of various discount and their offer it
+# lists of various discount and their offer items
 double_discount_items = ["A", "H", "V"]
 single_discount_items = ["B", "K", "P", "Q"]
 free_discount_items = ["E", "F", "N", "R", "U"]
@@ -201,6 +201,7 @@ def checkout(skus):
     
     # add the total price of items with "any_three" offer to the total checkout value
     return total_checkout_value + any_three_offer_price
+
 
 
 
