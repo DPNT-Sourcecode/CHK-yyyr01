@@ -136,6 +136,7 @@ def checkout(skus):
     #  Store items and quantity purchased
     item_details = {}
     # loop through each skus to get their associated quantity
+    for_three = {}
     for item in skus:
         # Check for invalid entry and return -1
         try:
@@ -167,6 +168,7 @@ def checkout(skus):
     if group_of_three_quantity >= 3:
         offer, leftover = divmod(group_of_three_quantity, 3)
         offer_price += offer * 45 
+        if 
 
 
     # Calculate total checkout value
@@ -183,5 +185,6 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
