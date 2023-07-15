@@ -3,34 +3,7 @@ from bisect import insort
 # skus = unicode string
 
 # Dictionary to store SKUs, prices and offers
-skus_dict = {
-    "A": { "price": 50, "offer": {"discount": [(3, 130), (5, 200)]}},
-    "B": { "price": 30, "offer": {"discount": [(2, 45)]}},
-    "C": { "price": 20},
-    "D": { "price": 15},
-    "E": { "price": 40 , "offer": {"free": [(2, "B")]}},
-    "F": { "price": 10 , "offer": {"free": [(2, "F")]}},
-    "G": { "price": 20},
-    "H": { "price": 10, "offer": {"discount": [(5, 45), (10, 80)]}},
-    "I": { "price": 35},
-    "J": { "price": 60},
-    "K": { "price": 70, "offer": {"discount": [(2, 120)]}},
-    "L": { "price": 90},
-    "M": { "price": 15},
-    "N": { "price": 40, "offer": {"free": [(3, "M")]}},
-    "O": { "price": 10},
-    "P": { "price": 50, "offer": {"discount": [(5, 200)]}},
-    "Q": { "price": 30, "offer": {"discount": [(3, 80)]}},
-    "R": { "price": 50, "offer": {"free": [(3, "Q")]}},
-    "S": { "price": 20, "offer": {"any_group_items": [(3, 45)]}},
-    "T": { "price": 20, "offer": {"any_group_items": [(3, 45)]}},
-    "U": { "price": 40, "offer": {"free": [(3, "U")]}},
-    "V": { "price": 50, "offer": {"discount": [(2, 90), (3, 130)]}},
-    "W": { "price": 20},
-    "X": { "price": 17, "offer": {"any_group_items": [(3, 45)]}},
-    "Y": { "price": 20, "offer": {"any_group_items": [(3, 45)]}},
-    "Z": { "price": 21, "offer": {"any_group_items": [(3, 45)]}},
-}
+skus_dict = 
 
 double_discount_items = ["A", "H", "V"]
 single_discount_items = ["B", "K", "P", "Q"]
