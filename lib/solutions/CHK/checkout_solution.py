@@ -72,9 +72,10 @@ def get_single_offer_price(item, quantity):
         offer_price = quantity * skus_dict[item]["price"]
     return offer_price
 
-def get_any_three_offer_price(item, item_details):
+any_three_offer_quantity = 0
+def get_any_three_offer_price(item, quantity):
     if item in any_three_offer_items:
-        quantity = item_details[item]
+        # quantity = item_details[item]
         any_three_offer_quantity += quantity
         print(any_three_offer_quantity)
         if any_three_offer_quantity == 3:
@@ -173,6 +174,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
