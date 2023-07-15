@@ -130,6 +130,13 @@ def update_checkout_with_free_offers(item_details):
                         item_details[free_item] = item_details[free_item] - offer
     return item_details
 
+def sort_items_by_price(items):
+    initial = {}
+    for item in items:
+        initial[item] = skus_dict[item]["price"]
+    sortedp = sorted(initial)
+    print(sortedp, "==")
+    
 def get_any_three_offer_total_price(for_three):
     sorted_item_by_price = sort_items_by_price(for_three)
     offer, left = divmod(len(for_three), 3)
@@ -182,6 +189,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
 
 
