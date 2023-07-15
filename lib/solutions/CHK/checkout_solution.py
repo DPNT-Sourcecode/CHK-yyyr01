@@ -34,7 +34,7 @@ skus_dict = {
 double_discount_items = ["A", "H", "V"]
 single_discount_items = ["B", "K", "P", "Q"]
 free_discount_items = ["E", "F", "N", "R", "U"]
-any_three_offer_items = ["S", "T", "X", "Y", "Z"]
+any_three_offer_items = {"S", "T", "X", "Y", "Z"}
 
 
 def get_double_offer_price(item, quantity):
@@ -131,7 +131,7 @@ def update_checkout_with_free_offers(item_details):
     return item_details
 
 def get_any_three_offer_total_price(for_three):
-    sorted_item_by_price = 
+    sorted_item_by_price = sort_items_by_price(for_three)
     offer, left = divmod(len(for_three), 3)
     price = offer * 45
     if left > 0:
@@ -182,5 +182,6 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
 
