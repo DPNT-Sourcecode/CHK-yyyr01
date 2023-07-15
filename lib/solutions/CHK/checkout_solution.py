@@ -135,8 +135,8 @@ def checkout(skus):
     total_checkout_value = 0
     #  Store items and quantity purchased
     item_details = {}
+    for_three = []
     # loop through each skus to get their associated quantity
-    for_three = {}
     for item in skus:
         # Check for invalid entry and return -1
         try:
@@ -144,11 +144,15 @@ def checkout(skus):
         except KeyError:
             return -1
         #  increase item quantity
-        if item not in item_details:
-            item_details[item] = 1
+        if item not in any_three_offer_items:
+            if item not in item_details:
+                item_details[item] = 1
+            else:
+                item_details[item] += 1
         else:
-            item_details[item] += 1
-    
+            for_three.append(item)
+
+    print(for_three)
     # Calculate free offer on B after purchase of 2E
     item_details = update_checkout_with_free_offers(item_details)
 
@@ -165,10 +169,10 @@ def checkout(skus):
     # group_of_three_offer_price += offer * 45 + 
     # group_of_three_quantity = 0
     # purchased_group_of_three = group_of_three_dict.keys()
-    if group_of_three_quantity >= 3:
-        offer, leftover = divmod(group_of_three_quantity, 3)
-        offer_price += offer * 45 
-        if 
+    # if group_of_three_quantity >= 3:
+    #     offer, leftover = divmod(group_of_three_quantity, 3)
+    #     offer_price += offer * 45 
+    #     if 
 
 
     # Calculate total checkout value
@@ -185,6 +189,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
