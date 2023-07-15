@@ -123,7 +123,7 @@ def update_checkout_with_free_offers(item_details):
 def checkout(skus):
     # Initialize total checkout value to zero
     total_checkout_value = 0
-    any_three_offer_quantity = 0
+    any_three_offer = {}
     #  Store items and quantity purchased
     item_details = {}
     # loop through each skus to get their associated quantity
@@ -151,6 +151,7 @@ def checkout(skus):
                 total_checkout_value += calculate_item_price(item, item_details)
             elif item_offer.get("any_group_items"):
                 quantity = item_details[item]
+                any_three_offer[item] = quantity
                 any_three_offer_quantity += quantity
                 print(any_three_offer_quantity)
                 if any_three_offer_quantity == 3:
@@ -164,6 +165,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
