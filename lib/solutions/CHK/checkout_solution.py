@@ -14,7 +14,15 @@ any_three_offer_items = ["S", "T", "X", "Y", "Z"]
 
 
 def get_double_offer_price(item, quantity):
+    """
+    Calculates offer price on items with two offers
+    Params:
+        item (string): SKU item purchased
+        quantity (int): quantity of item purchased
     
+    Returns:
+        offer_price (int): New price after offer has been a
+    """
     offer_price = 0
     item_discount_price = skus_dict[item]["offer"].get("discount")
     highest_discount = item_discount_price[1][0]
@@ -159,5 +167,6 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
 
