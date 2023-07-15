@@ -140,16 +140,18 @@ def checkout(skus):
         item_offer = skus_dict[item].get("offer")
         # Calculate checkout of discounted items
         if item_offer:
-            discounted_item = item_offer.get("discount")
-            if discounted_item:
+            # discounted_item = item_offer.get("discount")
+            if item_offer.get("discount"):
                 total_checkout_value += calculate_item_price(item, item_details)
+            elif item_offer.get("any_group_items"):
+                
             else:
-                any_three = item_offer.get("")
                 total_checkout_value += item_details[item] * skus_dict[item]["price"]
         else:
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
