@@ -148,6 +148,7 @@ def checkout(skus):
     #  Store items and quantity purchased
     item_details = {}
     for_three = []
+    for_three_sd = []
     # loop through each skus to get their associated quantity
     for item in skus:
         # Check for invalid entry and return -1
@@ -163,6 +164,8 @@ def checkout(skus):
                 item_details[item] += 1
         else:
             for_three.append(item)
+            insort(for_three, {item: skus_dict[item]["price"]})
+            print(for_three_sd)
 
     any_three_offer_price = get_any_three_offer_total_price(for_three)
     # Calculate free offer on B after purchase of 2E
@@ -182,5 +185,6 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
 
