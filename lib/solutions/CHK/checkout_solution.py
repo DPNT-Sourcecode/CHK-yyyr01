@@ -127,10 +127,10 @@ def get_any_three_offer_total_price(for_three):
     Get total price for items with any three offer 
 
     Params:
-        for_three (list): list of items with "any_three" offer, sorted by
+        for_three (list): list of items with "any_three" offer, sorted by item price
     
     Returns:
-        price (i): adjust item_details to applied free offers
+        price (int): price of items with "any three" offer
     """
     offer, left = divmod(len(for_three), 3)
     price = offer * 45
@@ -143,6 +143,15 @@ def get_any_three_offer_total_price(for_three):
 
 
 def checkout(skus):
+    """
+    Calculates total price of a number of items
+
+    Params:
+        skus (string): string containing the SKUs of all the products in the basket
+    
+    Returns:
+        price (int): total checkout value of all the items
+    """
     # Initialize total checkout value to zero
     total_checkout_value = 0
     #  Store items and quantity purchased
@@ -182,4 +191,5 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
