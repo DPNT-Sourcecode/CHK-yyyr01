@@ -72,14 +72,20 @@ def get_single_offer_price(item, quantity):
         offer_price = quantity * skus_dict[item]["price"]
     return offer_price
 
-def get_any_three_offer_price(item, quantity):
-    offer_price = get_single_offer_price(item, quantity)
-    return offer_price
+def get_any_three_offer_price(item, item_details):
+    if item in any_three_offer_items:
+        quantity = item_details[item]
+        any_three_offer_quantity += quantity
+        print(any_three_offer_quantity)
+        if any_three_offer_quantity == 3:
+            offer_price = get_any_three_offer_price(item, quantity)
+            print("yo", offer_price)
+        total_checkout_value += offer_price
+        print(any_three_offer_quantity)
 
 def calculate_item_price(item, item_details):
     offer_price = 0
     total_checkout_value = 0
-    print(item_details)
     if item in double_discount_items:
         quantity = item_details[item]
         offer_price = get_double_offer_price(item, quantity)
@@ -117,6 +123,7 @@ def update_checkout_with_free_offers(item_details):
 def checkout(skus):
     # Initialize total checkout value to zero
     total_checkout_value = 0
+    any_three_offer_quantity = 0
     #  Store items and quantity purchased
     item_details = {}
     # loop through each skus to get their associated quantity
@@ -143,6 +150,14 @@ def checkout(skus):
             if item_offer.get("discount"):
                 total_checkout_value += calculate_item_price(item, item_details)
             elif item_offer.get("any_group_items"):
+                quantity = item_details[item]
+                any_three_offer_quantity += quantity
+                print(any_three_offer_quantity)
+                if any_three_offer_quantity == 3:
+                    total_checkout_value += 45
+                    print("yo", offer_price)
+                total_checkout_value += offer_price
+                print(any_three_offer_quantity)
                 total_checkout_value += get_any_three_offer_price(item, item_details)
             else:
                 total_checkout_value += item_details[item] * skus_dict[item]["price"]
@@ -150,6 +165,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
