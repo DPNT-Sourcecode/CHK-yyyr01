@@ -17,13 +17,14 @@ def get_double_offer_price(item: int, quantity: str) -> int:
     """
     Calculates offer price on items with two discount offers
     Params:
-        item (string): SKU item purchased
+        item (str): SKU item purchased
         quantity (int): quantity of item purchased
     
     Returns:
         offer_price (int): New price after offer has been applied
     """
     offer_price = 0
+    # Get discount info for item
     item_discount_price = skus_dict[item]["offer"].get("discount")
     highest_discount = item_discount_price[1][0]
     highest_discount_price = item_discount_price[1][1]
@@ -44,17 +45,18 @@ def get_double_offer_price(item: int, quantity: str) -> int:
         offer_price = quantity * skus_dict[item]["price"]
     return offer_price
 
-def get_single_offer_price(item, quantity):
+def get_single_offer_price(item: int, quantity: int) -> int:
     """
     Calculates offer price on items with single discount offers
     Params:
-        item (string): SKU item purchased
+        item (str): SKU item purchased
         quantity (int): quantity of item purchased
     
     Returns:
         offer_price (int): New price after offer has been applied
     """
     offer_price = 0
+    # Get discount info for item
     item_discount_price = skus_dict[item]["offer"].get("discount")
     discount = item_discount_price[0][0]
     discount_price = item_discount_price[0][1]
@@ -66,7 +68,16 @@ def get_single_offer_price(item, quantity):
     return offer_price
 
 
-def calculate_item_price(item, item_details):
+def calculate_item_price(item: , item_details):
+    """
+    Calculates total item price on items purchased
+    Params:
+        item (str): SKU item purchased
+        item_details (dict): quantity of item purchased
+    
+    Returns:
+        offer_price (int): New price after offer has been applied
+    """
     offer_price = 0
     total_checkout_value = 0
     if item in double_discount_items:
@@ -152,6 +163,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
 
 
