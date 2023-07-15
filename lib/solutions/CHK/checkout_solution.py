@@ -31,6 +31,7 @@ def get_double_offer_price(item: int, quantity: str) -> int:
     highest_discount_price = item_discount_price[1][1]
     least_discount = item_discount_price[0][0]
     least_discount_price = item_discount_price[0][1]
+    # calculate item 
     if quantity >= highest_discount:
         offer, leftover = divmod(quantity, highest_discount)
         offer_price += offer * highest_discount_price
@@ -93,7 +94,7 @@ def calculate_item_price(item: str, item_details: dict) -> int:
     return total_checkout_value
 
 
-def update_checkout_with_free_offers(item_details):
+def update_checkout_with_free_offers(item_details: dict) -> dict:
     """
     Update checkout items where free offer is applicable
     Params:
@@ -123,12 +124,12 @@ def update_checkout_with_free_offers(item_details):
                         item_details[free_item] = item_details[free_item] - offer
     return item_details
     
-def get_any_three_offer_total_price(for_three):
+def get_any_three_offer_total_price(for_three: list) -> int:
     """
     Get total price for items with any three offer 
 
     Params:
-        for_three (list): list of items with "any_three" offer, sorted by item price
+        for_three (list): list of items dict with "any_three" offer, sorted by item price
     
     Returns:
         price (int): price of items with "any three" offer
@@ -143,7 +144,7 @@ def get_any_three_offer_total_price(for_three):
     return price
 
 
-def checkout(skus):
+def checkout(skus: str) -> int:
     """
     Calculates total price of a number of items
 
@@ -201,6 +202,7 @@ def checkout(skus):
     
     # add the total price of items with "any_three" offer to the total checkout value
     return total_checkout_value + any_three_offer_price
+
 
 
 
