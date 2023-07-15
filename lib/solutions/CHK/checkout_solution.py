@@ -184,11 +184,3 @@ def checkout(skus):
     
     return total_checkout_value + any_three_offer_price
 
-
-
-
-
-
-
-
-
