@@ -73,7 +73,7 @@ def calculate_item_price(item: str, item_details: dict) -> int:
     Calculates total item price on items purchased
     Params:
         item (str): SKU item purchased
-        item_details (dict): quantity of item purchased
+        item_details (dict): dict of purchased items and quantity
     
     Returns:
         total_checkout_value (int): total checkout value of item
@@ -96,13 +96,15 @@ def update_checkout_with_free_offers(item_details):
     """
     Update checkout items where free offer is applicable
     Params:
-        item_details (dict): quantity of item purchased
+        item_details (dict): dict of purchased items and quantity
     
     Returns:
-        item_details (dict): adjust 
+        item_details (dict): adjust item_details to applied free offers
     """
     for item in item_details:
+        # Check items with free offers and apply the free offer
         if item in free_discount_items:
+            # Get free offer info on item
             checkout_item_quantity = item_details.get(item, 0)
             free_offer_details = skus_dict[item]["offer"].get("free", 0)
             free_item_quantity = free_offer_details[0][0]
@@ -172,6 +174,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
 
 
