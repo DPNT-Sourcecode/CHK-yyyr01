@@ -3,7 +3,8 @@ import json
 # skus = unicode string
 
 # Dictionary to store SKUs, prices and offers
-skus_dict = json.loads()
+file = open("skus_items.json")
+skus_dict = json.load(file)
 
 double_discount_items = ["A", "H", "V"]
 single_discount_items = ["B", "K", "P", "Q"]
@@ -156,4 +157,5 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
