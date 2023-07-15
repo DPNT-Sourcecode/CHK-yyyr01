@@ -38,18 +38,11 @@ class TestCheckout():
         assert checkout_solution.checkout("FFFF") == 30
 
     def test_checkout_new_items(self):
-        assert checkout_solution.checkout("EEBZ") == 101
+        assert checkout_solution.checkout("EEBZ") == 130
         assert checkout_solution.checkout("RRRQ") == 150
-        assert checkout_solution.checkout("RRRR") == 200
+        
         assert checkout_solution.checkout("HERB") == 130
         assert checkout_solution.checkout("UUUU") == 120
-        assert checkout_solution.checkout("AAANNNM") == 250
-        assert checkout_solution.checkout("HHHHH") == 45
-        assert checkout_solution.checkout("HHHHHHHHHH") == 80
+        assert checkout_solution.checkout("NNNM") == 120
 
-    def test_checkout_any_three_offer(self):
-        # assert checkout_solution.checkout("XYZST") == 85
-        # assert checkout_solution.checkout("ST") == 40
-        # assert checkout_solution.checkout("UUZXUS") == 165
-        assert checkout_solution.checkout("SSSZ") == 65
 

@@ -138,7 +138,7 @@ def get_any_three_offer_total_price(for_three):
     if left > 0:
         for i in range(left):
             pos = (offer * 3) + i
-            item = for_three[pos]
+            item = for_three[pos]["item"]
             price += skus_dict[item]["price"]
     return price
 
@@ -183,6 +183,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
 
 
