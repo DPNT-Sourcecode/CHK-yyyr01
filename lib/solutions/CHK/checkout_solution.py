@@ -123,7 +123,15 @@ def update_checkout_with_free_offers(item_details):
     return item_details
     
 def get_any_three_offer_total_price(for_three):
-    print(for_three)
+    """
+    Get total price for items with any three offer 
+
+    Params:
+        for_three (list): list of items with "any_three" offer, sorted by
+    
+    Returns:
+        price (i): adjust item_details to applied free offers
+    """
     offer, left = divmod(len(for_three), 3)
     price = offer * 45
     if left > 0:
@@ -174,10 +182,4 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
-
-
-
-
-
-
 
