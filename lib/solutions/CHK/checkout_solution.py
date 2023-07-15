@@ -153,6 +153,12 @@ def checkout(skus):
             for_three.append(item)
 
     print(for_three)
+    offer, left = divmod(len(for_three), 3)
+    price = offer * 45
+    if left > 0:
+        for i
+        pos = offer * 3
+
     # Calculate free offer on B after purchase of 2E
     item_details = update_checkout_with_free_offers(item_details)
 
@@ -189,6 +195,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
