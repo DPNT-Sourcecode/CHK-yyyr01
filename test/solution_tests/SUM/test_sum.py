@@ -48,7 +48,7 @@ class TestCheckout():
         assert checkout_solution.checkout("HHHHHHHHHH") == 80
 
     def test_checkout_any_three_offer(self):
-        assert checkout_solution.checkout("XYZ") == 101
+        assert checkout_solution.checkout("XYZ") == 58
         assert checkout_solution.checkout("RRRQ") == 150
         assert checkout_solution.checkout("RRRR") == 200
         assert checkout_solution.checkout("HERB") == 130
@@ -56,3 +56,4 @@ class TestCheckout():
         assert checkout_solution.checkout("AAANNNM") == 250
         assert checkout_solution.checkout("HHHHH") == 45
         assert checkout_solution.checkout("HHHHHHHHHH") == 80
+

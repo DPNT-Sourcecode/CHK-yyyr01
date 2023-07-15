@@ -1,4 +1,3 @@
-from collections import OrderedDict
 # noinspection PyUnusedLocal
 # skus = unicode string
 
@@ -60,6 +59,30 @@ def get_double_offer_price(item, quantity):
         offer_price = quantity * skus_dict[item]["price"]
     return offer_price
 
+
+def get_double_offer_price(item, quantity):
+    offer_price = 0
+    item_discount_price = skus_dict[item]["offer"].get("discount")
+    highest_discount = item_discount_price[1][0]
+    highest_discount_price = item_discount_price[1][1]
+    least_discount = item_discount_price[0][0]
+    least_discount_price = item_discount_price[0][1]
+    if quantity >= highest_discount:
+        offer, leftover = divmod(quantity, highest_discount)
+        offer_price += offer * highest_discount_price
+        if leftover >= least_discount:
+            offer, leftover = divmod(leftover, least_discount)
+            offer_price += (offer * least_discount_price) + leftover * skus_dict[item]["price"]
+        else:
+            offer_price += leftover * skus_dict[item]["price"]
+    elif quantity >= least_discount:
+        offer, leftover = divmod(quantity, least_discount)
+        offer_price += (offer * least_discount_price) + (leftover * skus_dict[item]["price"])
+    else:
+        offer_price = quantity * skus_dict[item]["price"]
+    return offer_price
+
+
 def get_single_offer_price(item, quantity):
     offer_price = 0
     item_discount_price = skus_dict[item]["offer"].get("discount")
@@ -72,6 +95,7 @@ def get_single_offer_price(item, quantity):
         offer_price = quantity * skus_dict[item]["price"]
     return offer_price
 
+
 def calculate_item_price(item, item_details):
     offer_price = 0
     total_checkout_value = 0
@@ -83,7 +107,6 @@ def calculate_item_price(item, item_details):
         quantity = item_details[item]
         offer_price = get_single_offer_price(item, quantity)
         total_checkout_value += offer_price
-
     return total_checkout_value
 
 def update_checkout_with_free_offers(item_details):
@@ -107,12 +130,9 @@ def update_checkout_with_free_offers(item_details):
     return item_details
 
 
-
-
 def checkout(skus):
     # Initialize total checkout value to zero
     total_checkout_value = 0
-    any_three_offer_quantity = 0
     #  Store items and quantity purchased
     item_details = {}
     # loop through each skus to get their associated quantity
@@ -128,43 +148,22 @@ def checkout(skus):
         else:
             item_details[item] += 1
     
-    # Calculate free offer after item purchase
+    # Calculate free offer on B after purchase of 2E
     item_details = update_checkout_with_free_offers(item_details)
-
-    # extract group items dict
-    group_of_three_dict =  {k: v for k, v in item_details.items() if k in any_three_offer_items}
-    for k in group_of_three_dict:
-        del item_details[k]
-    print(item_details, "0", group_of_three_dict)
-
-
 
     # Calculate total checkout value
     for item in item_details:
         item_offer = skus_dict[item].get("offer")
         # Calculate checkout of discounted items
         if item_offer:
-            if item_offer.get("discount"):
+            discounted_item = item_offer.get("discount")
+            if discounted_item:
                 total_checkout_value += calculate_item_price(item, item_details)
             else:
                 total_checkout_value += item_details[item] * skus_dict[item]["price"]
         else:
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
-    # group_of_three_quantity = sum(group_of_three_dict.values())
-    # # print(group_of_three_quantity)
-    # # group_of_three_offer_price = 0
-    # # offer, leftover = divmod(group_of_three_quantity, 3)
-    # # group_of_three_offer_price += offer * 45 + 
-    # group_of_three_quantity = 0
-    # purchased_group_of_three = group_of_three_dict.keys()
-    # if group_of_three_quantity > 3:
-
-    # for item in group_of_three_dict:
-    #     if group_of_three_quantity[item] < 3 and group_of_three_quantity
-
-
-
-    
     return total_checkout_value
+
 
