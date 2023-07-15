@@ -129,6 +129,7 @@ def update_checkout_with_free_offers(item_details):
                         item_details[free_item] = item_details[free_item] - offer
     return item_details
 
+def get_any_three_offer_total_price()
 
 def checkout(skus):
     # Initialize total checkout value to zero
@@ -152,7 +153,8 @@ def checkout(skus):
         else:
             for_three.append(item)
 
-    print(for_three)
+    any_three_offer_price = get_any_three_offer_total_price(for_three)
+
     offer, left = divmod(len(for_three), 3)
     price = offer * 45
     if left > 0:
@@ -160,30 +162,11 @@ def checkout(skus):
             pos = (offer * 3) + i
             print(pos)
             item = for_three[pos]
-            price += skus_dict[item]
+            price += skus_dict[item]["price"]
     print(price)
 
     # Calculate free offer on B after purchase of 2E
     item_details = update_checkout_with_free_offers(item_details)
-
-     # extract group items dict
-    group_of_three_dict =  {k: v for k, v in item_details.items() if k in any_three_offer_items}
-    for k in group_of_three_dict:
-        del item_details[k]
-    print(item_details, "0", group_of_three_dict)
-
-    group_of_three_quantity = sum(group_of_three_dict.values())
-    # print(group_of_three_quantity)
-    # group_of_three_offer_price = 0
-    # offer, leftover = divmod(group_of_three_quantity, 3)
-    # group_of_three_offer_price += offer * 45 + 
-    # group_of_three_quantity = 0
-    # purchased_group_of_three = group_of_three_dict.keys()
-    # if group_of_three_quantity >= 3:
-    #     offer, leftover = divmod(group_of_three_quantity, 3)
-    #     offer_price += offer * 45 
-    #     if 
-
 
     # Calculate total checkout value
     for item in item_details:
@@ -199,6 +182,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
