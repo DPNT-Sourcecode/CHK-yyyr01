@@ -68,7 +68,7 @@ def get_single_offer_price(item: int, quantity: int) -> int:
     return offer_price
 
 
-def calculate_item_price(item: , item_details):
+def calculate_item_price(item: str, item_details: dict) -> int:
     """
     Calculates total item price on items purchased
     Params:
@@ -76,10 +76,11 @@ def calculate_item_price(item: , item_details):
         item_details (dict): quantity of item purchased
     
     Returns:
-        offer_price (int): New price after offer has been applied
+        total_checkout_value (int): total checkout value of item
     """
     offer_price = 0
     total_checkout_value = 0
+    # Check what discount applies to item and apply
     if item in double_discount_items:
         quantity = item_details[item]
         offer_price = get_double_offer_price(item, quantity)
@@ -92,6 +93,14 @@ def calculate_item_price(item: , item_details):
 
 
 def update_checkout_with_free_offers(item_details):
+    """
+    Update checkout items where free offer is applicable
+    Params:
+        item_details (dict): quantity of item purchased
+    
+    Returns:
+        item_details (dict): adjust 
+    """
     for item in item_details:
         if item in free_discount_items:
             checkout_item_quantity = item_details.get(item, 0)
@@ -163,6 +172,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
 
 
