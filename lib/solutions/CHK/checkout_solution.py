@@ -13,15 +13,15 @@ free_discount_items = ["E", "F", "N", "R", "U"]
 any_three_offer_items = ["S", "T", "X", "Y", "Z"]
 
 
-def get_double_offer_price(item, quantity):
+def get_double_offer_price(item: int, quantity: str) -> int:
     """
-    Calculates offer price on items with two offers
+    Calculates offer price on items with two discount offers
     Params:
         item (string): SKU item purchased
         quantity (int): quantity of item purchased
     
     Returns:
-        offer_price (int): New price after offer has been a
+        offer_price (int): New price after offer has been applied
     """
     offer_price = 0
     item_discount_price = skus_dict[item]["offer"].get("discount")
@@ -44,31 +44,16 @@ def get_double_offer_price(item, quantity):
         offer_price = quantity * skus_dict[item]["price"]
     return offer_price
 
-
-def get_double_offer_price(item, quantity):
-    offer_price = 0
-    item_discount_price = skus_dict[item]["offer"].get("discount")
-    highest_discount = item_discount_price[1][0]
-    highest_discount_price = item_discount_price[1][1]
-    least_discount = item_discount_price[0][0]
-    least_discount_price = item_discount_price[0][1]
-    if quantity >= highest_discount:
-        offer, leftover = divmod(quantity, highest_discount)
-        offer_price += offer * highest_discount_price
-        if leftover >= least_discount:
-            offer, leftover = divmod(leftover, least_discount)
-            offer_price += (offer * least_discount_price) + leftover * skus_dict[item]["price"]
-        else:
-            offer_price += leftover * skus_dict[item]["price"]
-    elif quantity >= least_discount:
-        offer, leftover = divmod(quantity, least_discount)
-        offer_price += (offer * least_discount_price) + (leftover * skus_dict[item]["price"])
-    else:
-        offer_price = quantity * skus_dict[item]["price"]
-    return offer_price
-
-
 def get_single_offer_price(item, quantity):
+    """
+    Calculates offer price on items with single discount offers
+    Params:
+        item (string): SKU item purchased
+        quantity (int): quantity of item purchased
+    
+    Returns:
+        offer_price (int): New price after offer has been applied
+    """
     offer_price = 0
     item_discount_price = skus_dict[item]["offer"].get("discount")
     discount = item_discount_price[0][0]
@@ -167,6 +152,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
 
 
