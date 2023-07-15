@@ -209,15 +209,8 @@ def checkout(skus: str) -> int:
 """
     - Structure SKUs data much better
     - Refactor the offer calculation to remove duplicates
+    - Better logic to calculation total checkout value, that allows for much scaling
     - More robust testing
     - Improve performance while calculating checkout
-    - 
+    - More python typings
 """
-
-
-
-
-
-
-
-
