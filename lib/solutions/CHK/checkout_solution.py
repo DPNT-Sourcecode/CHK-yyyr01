@@ -94,6 +94,15 @@ def calculate_item_price(item, item_details):
         quantity = item_details[item]
         offer_price = get_single_offer_price(item, quantity)
         total_checkout_value += offer_price
+    elif item in any_three_offer_items:
+        quantity = item_details[item]
+        any_three_offer_quantity += quantity
+        print(any_three_offer_quantity)
+        if any_three_offer_quantity == 3:
+            offer_price = get_any_three_offer_price(item, quantity)
+            print("yo", offer_price)
+        total_checkout_value += offer_price
+        print(any_three_offer_quantity)
 
     return total_checkout_value
 
@@ -147,24 +156,26 @@ def checkout(skus):
         item_offer = skus_dict[item].get("offer")
         # Calculate checkout of discounted items
         if item_offer:
-            if item_offer.get("discount"):
+            if item_offer.get("discount") or item_offer.get("any_group_items"):
                 total_checkout_value += calculate_item_price(item, item_details)
-            elif item_offer.get("any_group_items"):
-                quantity = item_details[item]
-                any_three_offer[item] = quantity
-                any_three_offer_quantity += quantity
-                print(any_three_offer_quantity)
-                if any_three_offer_quantity == 3:
-                    total_checkout_value += 45
-                    any_three_offer_quantity = 0
-                print(any_three_offer_quantity)
-                total_checkout_value += get_any_three_offer_price(item, item_details)
+            # e
+            #     quantity = item_details[item]
+            #     any_three_offer[item] = quantity
+            #     any_three_offer_quantity += quantity
+            #     print(any_three_offer_quantity)
+            #     if any_three_offer_quantity == 3:
+            #         total_checkout_value += 45
+            #         any_three_offer_quantity = 0
+            #     print(any_three_offer_quantity)
+            #     total_checkout_value += get_any_three_offer_price(item, item_details)
             else:
                 total_checkout_value += item_details[item] * skus_dict[item]["price"]
+
         else:
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
