@@ -90,12 +90,12 @@ def calculate_item_price(item, item_details):
         quantity = item_details[item]
         offer_price = get_single_offer_price(item, quantity)
         total_checkout_value += offer_price
-    # elif item in any_three_offer:
-    #     quantity = item_details[item]
-    #     any_three_offer_quantity += quantity
-    #     if any_three_offer_quantity == 3:
-    #         offer_price = get_any_three_offer_price(item, quantity)
-    #     total_checkout_value += offer_price
+    elif item in any_three_offer:
+        quantity = item_details[item]
+        any_three_offer_quantity += quantity
+        if any_three_offer_quantity == 3:
+            offer_price = get_any_three_offer_price(item, quantity)
+        total_checkout_value += offer_price
     return total_checkout_value
 
 def update_checkout_with_free_offers(item_details):
@@ -147,8 +147,8 @@ def checkout(skus):
         item_offer = skus_dict[item].get("offer")
         # Calculate checkout of discounted items
         if item_offer:
-            discounted_item = item_offer.get("discount")
-            if discounted_item:
+            # discounted_item = item_offer.get("discount")
+            if item_offer.get("discount") or item_offer.get("any_group_items"):
                 total_checkout_value += calculate_item_price(item, item_details)
             else:
                 total_checkout_value += item_details[item] * skus_dict[item]["price"]
@@ -156,6 +156,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
