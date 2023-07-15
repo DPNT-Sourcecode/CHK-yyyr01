@@ -2,8 +2,9 @@ import json
 # noinspection PyUnusedLocal
 # skus = unicode string
 
+# Load JSON file
+file = open("lib/solutions/CHK/skus.json")
 # Dictionary to store SKUs, prices and offers
-file = open("skus_items.json")
 skus_dict = json.load(file)
 
 double_discount_items = ["A", "H", "V"]
@@ -13,6 +14,7 @@ any_three_offer_items = ["S", "T", "X", "Y", "Z"]
 
 
 def get_double_offer_price(item, quantity):
+    
     offer_price = 0
     item_discount_price = skus_dict[item]["offer"].get("discount")
     highest_discount = item_discount_price[1][0]
