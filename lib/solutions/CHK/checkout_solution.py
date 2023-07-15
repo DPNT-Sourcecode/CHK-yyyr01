@@ -155,8 +155,7 @@ def checkout(skus):
                 print(any_three_offer_quantity)
                 if any_three_offer_quantity == 3:
                     total_checkout_value += 45
-                    print("yo", offer_price)
-                total_checkout_value += offer_price
+                    any_three_offer_quantity = 0
                 print(any_three_offer_quantity)
                 total_checkout_value += get_any_three_offer_price(item, item_details)
             else:
@@ -165,6 +164,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
 
