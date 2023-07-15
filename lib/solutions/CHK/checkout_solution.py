@@ -1,9 +1,9 @@
-from bisect import insort
+import json
 # noinspection PyUnusedLocal
 # skus = unicode string
 
 # Dictionary to store SKUs, prices and offers
-skus_dict = 
+skus_dict = json.loads()
 
 double_discount_items = ["A", "H", "V"]
 single_discount_items = ["B", "K", "P", "Q"]
