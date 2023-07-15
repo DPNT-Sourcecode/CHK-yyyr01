@@ -170,7 +170,7 @@ def checkout(skus):
         else:
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
-    # group_of_three_quantity = sum(group_of_three.values())
+    group_of_three_quantity = sum(group_of_three_dict.values())
     # print(group_of_three_quantity)
     # group_of_three_offer_price = 0
     # offer, leftover = divmod(group_of_three_quantity, 3)
@@ -178,12 +178,13 @@ def checkout(skus):
     group_of_three_quantity = 0
     purchased_group_of_three = group_of_three_dict.keys()
     for item in group_of_three_dict:
-        if group_of_three_quantity[item] < 3 and:
+        if group_of_three_quantity[item] < 3 and group_of_three_quantity
 
 
 
     
     return total_checkout_value
+
 
 
 
