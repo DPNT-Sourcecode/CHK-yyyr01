@@ -191,7 +191,8 @@ def checkout(skus: str) -> int:
     for item in item_details:
         item_offer = skus_dict[item].get("offer")
         if item_offer:
-            # add checkout value items with offer ot the total checkout value
+            # add checkout value items with discount offer ot the total checkout value
+            
             discounted_item = item_offer.get("discount")
             if discounted_item:
                 total_checkout_value += calculate_item_price(item, item_details)
@@ -203,6 +204,7 @@ def checkout(skus: str) -> int:
     
     # add the total price of items with "any_three" offer to the total checkout value
     return total_checkout_value + any_three_offer_price
+
 
 
 
