@@ -176,11 +176,14 @@ def checkout(skus):
     # offer, leftover = divmod(group_of_three_quantity, 3)
     # group_of_three_offer_price += offer * 45 + 
     group_of_three_quantity = 0
-    for k in group_of_three:
-        group_of_three_quantity += 0
-        
+    for item in group_of_three:
+        if group_of_three_quantity[item] < 3 and group_of_three.keys() not in any_three_offer_items:
+            
+
+
     
     return total_checkout_value
+
 
 
 
