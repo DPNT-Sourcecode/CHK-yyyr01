@@ -35,7 +35,7 @@ skus_dict = {
 double_discount_items = ["A", "H", "V"]
 single_discount_items = ["B", "K", "P", "Q"]
 free_discount_items = ["E", "F", "N", "R", "U"]
-any_three_offer_items = {"S": 20, "T": 20, "X": 17, "Y": 20, "Z": 21}
+any_three_offer_items = ["S", "T", "X", "Y", "Z"]
 
 
 def get_double_offer_price(item, quantity):
@@ -165,8 +165,8 @@ def checkout(skus):
         else:
             for_three.append(item)
             print(item,skus_dict[item]["price"] )
-            insort(for_three_sd, {item: skus_dict[item]["price"]}, key=lambda x: x[])
-            print(for_three_sd, "k")
+            insort(for_three_sd, {item: skus_dict[item]["price"]}, key=lambda x: x[item])
+    print(for_three_sd, "k")
 
     any_three_offer_price = get_any_three_offer_total_price(for_three)
     # Calculate free offer on B after purchase of 2E
@@ -186,6 +186,7 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value + any_three_offer_price
+
 
 
 
