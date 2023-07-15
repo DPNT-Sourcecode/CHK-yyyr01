@@ -173,9 +173,12 @@ def checkout(skus):
     group_of_three_quantity = sum(group_of_three.values())
     print(group_of_three_quantity)
     group_of_three_offer_price = 0
-    if quantity >= 3
+    offer, leftover = divmod(group_of_three_quantity, 3)
+    group_of_three_offer_price += offer * 45 + 
+    for k in group_of_three
     
     return total_checkout_value
+
 
 
 
