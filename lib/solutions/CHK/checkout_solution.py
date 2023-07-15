@@ -143,8 +143,13 @@ def checkout(skus):
     item_details = update_checkout_with_free_offers(item_details)
 
     # extract group items dict
+    for k, v in any_three_offer_items:
+        d
     group_of_three =  {k: v for k, v in item_details.items() if k in any_three_offer_items}
-    print(set(item_details) - set(group_of_three))
+    a = set(item_details) - set(any_three_offer_items)
+    print(a, "==")
+    for k in a: del item_details[a]
+    print(item_details, "0")
 
 
 
@@ -169,5 +174,6 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
