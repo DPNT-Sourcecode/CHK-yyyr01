@@ -22,20 +22,20 @@ skus_dict = {
     "P": { "price": 50, "offer": {"discount": [(5, 200)]}},
     "Q": { "price": 30, "offer": {"discount": [(3, 80)]}},
     "R": { "price": 50, "offer": {"free": [(3, "Q")]}},
-    "S": { "price": 20},
-    "T": { "price": 20},
+    "S": { "price": 20, "offer": {"any": [(3, "STXYZ", 45)]}},
+    "T": { "price": 20, "offer": {"any": [(3, "STXYZ", 45)]}},
     "U": { "price": 40, "offer": {"free": [(3, "U")]}},
     "V": { "price": 50, "offer": {"discount": [(2, 90), (3, 130)]}},
     "W": { "price": 20},
-    "X": { "price": 17},
-    "Y": { "price": 20},
-    "Z": { "price": 21},
+    "X": { "price": 17, "offer": {"any": [(3, "STXYZ", 45)]}},
+    "Y": { "price": 20, "offer": {"any": [(3, "STXYZ", 45)]}},
+    "Z": { "price": 21, "offer": {"any": [(3, "STXYZ", 45)]}},
 }
 
 double_discount_items = ["A", "H", "V"]
 single_discount_items = ["B", "K", "P", "Q"]
 free_discount_items = ["E", "F", "N", "R", "U"]
-any_three_offer = ["ST", "X", "Y", "Z"]
+any_three_offer = ["S", "T", "X", "Y", "Z"]
 
 
 def get_double_offer_price(item, quantity):
@@ -145,5 +145,6 @@ def checkout(skus):
             total_checkout_value += item_details[item] * skus_dict[item]["price"]
     
     return total_checkout_value
+
 
 
